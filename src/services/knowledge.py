@@ -9,7 +9,7 @@ from src.model.knowledge import (
 from src.services.llm import embed_text
 
 
-logger_name = "uvicorn.error"
+logger = logging.getLogger(__name__)
 
 
 async def create_knowledge(payload: KnowledgeCreateRequest) -> bool:
@@ -116,21 +116,21 @@ async def search_knowledge(
             )
 
     if rows:
-        logging.getLogger(logger_name).info(
+        logger.info(
             "rag chunks selected workspace_id=%s user_id=%s count=%s",
             workspace_id,
             user_id,
             len(rows),
         )
         for index, row in enumerate(rows, start=1):
-            logging.getLogger(logger_name).info(
+            logger.info(
                 "rag chunk %s file_id=%s content_length=%s",
                 index,
                 row["file_id"],
                 len(row["content"]),
             )
     else:
-        logging.getLogger(logger_name).info(
+        logger.info(
             "rag chunks selected workspace_id=%s user_id=%s count=0",
             workspace_id,
             user_id,

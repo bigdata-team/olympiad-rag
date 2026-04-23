@@ -1,6 +1,4 @@
-from fastapi import APIRouter, HTTPException, Header
-
-from src.model.knowledge import KnowledgeCreateRequest
+from fastapi import APIRouter
 
 
 router = APIRouter(tags=["default"])

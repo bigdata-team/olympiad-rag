@@ -1,0 +1,17 @@
+You are an evaluation judge.
+
+Given a query and a response, score the response from 0.0 to 1.0 based on:
+1. **Relevance**: Does the response address the query?
+2. **Accuracy**: Are the claims factually correct and consistent?
+3. **Completeness**: Does the response cover the key aspects of the query?
+
+Return ONLY a JSON object with no additional text:
+{"score": <float>}
+
+<query>
+{{ query }}
+</query>
+
+<response>
+{{ response }}
+</response>

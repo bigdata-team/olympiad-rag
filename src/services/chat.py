@@ -1,21 +1,16 @@
 import asyncio
 import threading
-from pathlib import Path
-
-from jinja2 import Template
 
 from src.model.chat import ChatRequest
 from src.services.knowledge import search_knowledge
 from src.services.llm import complete_chat, stream_chat
+from src.templates import env
 
-
-_RAG_TEMPLATE = Template(
-    Path(__file__).resolve().parent.parent.joinpath("templates", "rag_system_prompt.j2").read_text()
-)
+_rag_template = env.get_template("rag_system_prompt.j2")
 
 
 def _build_rag_system_prompt(system_messages: list[str], contexts: list[str]) -> str:
-    return _RAG_TEMPLATE.render(
+    return _rag_template.render(
         system_messages=system_messages,
         contexts=contexts,
     ).strip()
