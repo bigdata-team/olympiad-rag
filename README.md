@@ -46,7 +46,7 @@ docker compose --profile dev up --build
 Production-style:
 
 ```bash
-docker compose --profile prod up --build
+docker compose --profile prod up --build --scale app=4, --scale worker=4
 ```
 
 Ports:
@@ -219,7 +219,11 @@ curl -X POST http://127.0.0.1:8000/api/v1/eval \
 `200 OK`
 
 ```json
-{ "id": "550e8400-e29b-41d4-a716-446655440000", "status": "pending", "score": null }
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "status": "pending",
+  "score": null
+}
 ```
 
 Poll for result:
@@ -231,7 +235,11 @@ curl http://127.0.0.1:8000/api/v1/eval/job/550e8400-e29b-41d4-a716-446655440000
 ```
 
 ```json
-{ "id": "550e8400-e29b-41d4-a716-446655440000", "status": "completed", "score": 1.0 }
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "status": "completed",
+  "score": 1.0
+}
 ```
 
 #### Batch Eval
@@ -252,7 +260,11 @@ curl -X POST http://127.0.0.1:8000/api/v1/eval/batch \
 `200 OK`
 
 ```json
-{ "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8", "jobs": [], "status": "pending" }
+{
+  "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+  "jobs": [],
+  "status": "pending"
+}
 ```
 
 Poll for result:
@@ -263,8 +275,16 @@ Poll for result:
 {
   "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
   "jobs": [
-    { "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "status": "completed", "score": 1.0 },
-    { "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7", "status": "completed", "score": 0.0 }
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "status": "completed",
+      "score": 1.0
+    },
+    {
+      "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+      "status": "completed",
+      "score": 0.0
+    }
   ],
   "status": "completed"
 }
@@ -294,7 +314,11 @@ curl -X POST http://127.0.0.1:8000/api/v1/reval \
 `200 OK`
 
 ```json
-{ "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "status": "pending", "score": null }
+{
+  "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+  "status": "pending",
+  "score": null
+}
 ```
 
 Poll for result:
@@ -302,7 +326,11 @@ Poll for result:
 `GET /api/v1/reval/job/{job_id}`
 
 ```json
-{ "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "status": "completed", "score": 1.0 }
+{
+  "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+  "status": "completed",
+  "score": 1.0
+}
 ```
 
 #### Batch RAG Eval
@@ -338,8 +366,16 @@ Poll for result:
 {
   "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
   "jobs": [
-    { "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d", "status": "completed", "score": 1.0 },
-    { "id": "9f8e7d6c-5b4a-4392-8170-1e2d3c4b5a69", "status": "completed", "score": 0.0 }
+    {
+      "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "status": "completed",
+      "score": 1.0
+    },
+    {
+      "id": "9f8e7d6c-5b4a-4392-8170-1e2d3c4b5a69",
+      "status": "completed",
+      "score": 0.0
+    }
   ],
   "status": "completed"
 }
