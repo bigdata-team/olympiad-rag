@@ -46,7 +46,7 @@ docker compose --profile dev up --build
 Production-style:
 
 ```bash
-docker compose --profile prod up --build --scale app=4, --scale worker=4
+docker compose --profile prod up --build -d --scale app=4 --scale worker=4
 ```
 
 Ports:
