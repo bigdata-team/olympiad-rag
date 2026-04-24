@@ -2,6 +2,8 @@
 
 Minimal FastAPI service for knowledge storage, RAG-style chat, and response evaluation backed by PostgreSQL with `pgvector`, Redis, and Celery.
 
+![architecture](arch.png)
+
 ## Requirements
 
 - Docker and Docker Compose
